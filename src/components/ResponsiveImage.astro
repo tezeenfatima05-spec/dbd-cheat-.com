@@ -1,7 +1,6 @@
 ---
 import {
   DEFAULT_IMAGE_WIDTHS,
-  defaultWebpSrc,
   responsiveSrcSet,
 } from '../utils/responsiveImage';
 
@@ -35,13 +34,13 @@ const isRaster = /\.(png|jpe?g|webp)$/i.test(src);
 const srcSet = responsiveSrcSet(src, widths);
 const imgSrc = desktopOnly
   ? 'data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7'
-  : defaultWebpSrc(src, widths);
+  : src;
 const pictureSizes = desktopOnly ? '(min-width: 1024px) 490px, 1px' : sizes;
 const pictureMedia = desktopOnly ? '(min-width: 1024px)' : undefined;
 ---
 
 {
-  isRaster ? (
+  isRaster && desktopOnly ? (
     <picture>
       <source type="image/webp" srcset={srcSet} sizes={pictureSizes} media={pictureMedia} />
       <img
@@ -59,7 +58,7 @@ const pictureMedia = desktopOnly ? '(min-width: 1024px)' : undefined;
     </picture>
   ) : (
     <img
-      src={src}
+      src={imgSrc}
       alt={alt}
       width={width}
       height={height}
