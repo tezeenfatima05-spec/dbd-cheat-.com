@@ -1,5 +1,6 @@
 import { t } from '../i18n';
 import { checkoutForSlug, checkoutPath } from '../config/checkout';
+import { PRODUCT_BASE } from '../config/site';
 import type { IconName } from '../components/icons/types';
 
 export interface ProductSlide {
@@ -58,60 +59,34 @@ export interface ProductPage {
 
 /** Guides paired with each product detail page */
 export const productRelatedBlogSlugs: Record<string, string[]> = {
-  lite: ['dota-2-map-hack-setup', 'dota-2-lite-vs-pro', 'dota-2-zoom-hack-guide', 'vac-patch-day-checklist'],
-  pro: [
-    'dota-2-scripts-ranked-mmr',
-    'dota-2-auto-combo-hero-scripts',
-    'dota-2-lite-vs-pro',
-    'dota-2-stream-proof-setup',
-  ],
-  elite: [
-    'dota-2-elite-tier-guide',
-    'dota-2-cheats-features-guide',
-    'dota-2-map-hack-setup',
-    'vac-patch-day-checklist',
-    'how-to-buy-dota-2-cheats-2026',
-  ],
-  'hwid-spoofer': [
-    'dota-2-hwid-spoofer-after-ban',
-    'valve-anti-cheat-unable-to-verify',
-    'vac-patch-day-checklist',
-    'dota-2-external-cheat-guide',
-  ],
-  ugc: [
-    'valve-anti-cheat-unable-to-verify',
-    'dota-2-hwid-spoofer-after-ban',
-    'how-to-buy-dota-2-cheats-2026',
-  ],
-  'unlock-all': [
-    'dota-2-skin-changer-guide',
-    'dota-2-cheats-features-guide',
-    'dota-2-stream-proof-setup',
-  ],
+  dbd: ['best-dbd-cheats', 'dbd-esp-guide', 'dbd-cheats-features', 'dbd-cloud-dma', 'dbd-installation'],
+  'hwid-spoofer': ['dbd-hwid-spoofer', 'dbd-anti-cheat', 'dbd-cheats-safety', 'dbd-cheats-comparison'],
+  ugc: ['dbd-ugc-tool', 'dbd-cheats-safety', 'dbd-cheats-comparison', 'best-dbd-cheats'],
+  'cloud-dma': ['dbd-cloud-dma', 'dbd-pc-requirements', 'dbd-cheats-features', 'dbd-installation'],
 };
 
-const productBase = '/products/dota-2-cheats/';
+const productBase = PRODUCT_BASE;
 
 const defaultAcquisitionSteps: AcquisitionStep[] = [
   {
     num: '01',
-    title: 'Review current status',
-    desc: 'Check the live banner on dotacheats.com and Discord #status before purchase—especially after a Dota 2 or VAC update.',
+    title: 'Match the listing to the job',
+    desc: 'The main cheat, Cloud DMA, HWID Spoofer, and UGC Tool are separate purchases on dbd-cheat.com.',
   },
   {
     num: '02',
-    title: 'Choose your access tier',
-    desc: 'Select Elite dota cheats or the utility that matches your goal. Review the feature list before checkout via our secure checkout.',
+    title: 'Confirm Windows PC',
+    desc: 'Windows 10 or 11, with Dead by Daylight on Steam, Epic Games, or Xbox Game Pass for PC.',
   },
   {
     num: '03',
-    title: 'Contact the team',
-    desc: 'Open Discord and confirm availability, Steam platform, and payment details with your order email ready.',
+    title: 'Read the merchant offer',
+    desc: 'Price, term, and any related purchases are on the checkout page. This site does not invent a price.',
   },
   {
     num: '04',
-    title: 'Follow guided setup',
-    desc: 'Use only the operator portal, patch loader, and setup guide. Test in a lobby, load presets, then queue ranked or Turbo.',
+    title: 'Follow the order you receive',
+    desc: 'Use only the delivery notes that come with that purchase. Stop if a game update is newer than the build note.',
   },
 ];
 
@@ -123,17 +98,17 @@ function acquisitionFor(productName: string): ProductAcquisition {
 }
 
 const sharedGoodToKnow =
-  'Dota 2 and VAC receive frequent updates. Confirm module availability on the live status panel at dotacheats.com before you purchase or launch. Overlay behavior may differ in lobbies, replays and spectator mode after patches.';
+  'Dead by Daylight runs here on Windows 10 or 11. The merchant supports Steam, Epic Games, and Xbox Game Pass for PC. Full functionality of the main cheat requires Cloud DMA, sold separately. Related purchases may be required. Confirm the current feature list on the merchant page before you pay.';
 
 const sharedLimitations =
-  'Third-party software in Dota 2 can violate Valve Terms of Use and lead to VAC bans or account action. You use this software at your own risk. Compatibility and availability can change after game, VAC, or Windows updates without notice.';
+  'Third-party software for Dead by Daylight can conflict with the game rules and anti-cheat systems. Account action is possible. These listings are not offered as ban-proof or risk-free, and they do not guarantee that a penalty will be reversed. Console and mobile are not supported. Availability can change after a game or Windows update.';
 
-const dotaSystemRequirements: SystemRequirement[] = [
-  { icon: 'reqWindows', text: 'Supported 64-bit edition of Windows 10 or Windows 11.' },
-  { icon: 'reqSteam', text: 'Current Dota 2 client via Steam with latest patches applied.' },
-  { icon: 'reqSettings', text: 'Administrator access for loader installation and patch updates.' },
-  { icon: 'reqWifi', text: 'Stable internet connection for portal access and patch delivery.' },
-  { icon: 'reqCpu', text: 'A system that meets Dota 2 published hardware requirements.' },
+const pcSystemRequirements: SystemRequirement[] = [
+  { icon: 'reqWindows', text: '64-bit Windows 10 or Windows 11.' },
+  { icon: 'reqSteam', text: 'Dead by Daylight on Steam, Epic Games, or Xbox Game Pass for PC.' },
+  { icon: 'reqSettings', text: 'A PC that can run the current Dead by Daylight client.' },
+  { icon: 'reqWifi', text: 'A connection to reach merchant checkout and any build note.' },
+  { icon: 'reqCpu', text: 'Cloud DMA (Hyper-V, single PC) for full main-cheat functionality.' },
 ];
 
 type GalleryKey = keyof typeof galleryRaw;
@@ -141,47 +116,41 @@ type GalleryKey = keyof typeof galleryRaw;
 const gameplay = '/images/gameplay';
 
 const galleryRaw = {
-  gpMapHack: {
-    src: `${gameplay}/dota-2-map-hack.png`,
-    alt: 'Dota 2 map hack showing enemy hero positions and ward locations',
-    caption: 'Map hack awareness',
-    captionDesc: 'Enemy position tracking, ward ESP and rune timers during a ranked mid push.',
+  esp: {
+    src: `${gameplay}/dbd-esp.png`,
+    alt: 'Dead by Daylight Survivor ESP with box, skeleton, and player details',
+    caption: 'Survivor ESP',
+    captionDesc: 'Box, fill, skeleton, nickname, health, level, prestige, character name, distance, and view line.',
   },
-  gpScripts: {
-    src: `${gameplay}/dota-2-scripts-combo.png`,
-    alt: 'Dota 2 Auto Combo script landing Invoker combo sequence',
-    caption: 'Auto Combo scripts',
-    captionDesc: 'Invoker Tornado → EMP → Meteor chain with Smart Cast prediction active.',
+  'world-esp': {
+    src: `${gameplay}/dbd-world-esp.png`,
+    alt: 'Dead by Daylight World ESP marking generators, hooks, pallets, and exit gates',
+    caption: 'World ESP',
+    captionDesc: 'Generators, meat hooks, pallets, windows, closets, chests, totems, traps, hatch, and escape doors.',
   },
-  gpZoomHack: {
-    src: `${gameplay}/dota-2-zoom-hack.png`,
-    alt: 'Dota 2 zoom hack extended camera view of entire lane',
-    caption: 'Extended camera zoom',
-    captionDesc: 'Zoom hack showing full lane vision for safer positioning and gank avoidance.',
+  'skill-check': {
+    src: `${gameplay}/dbd-skill-check.png`,
+    alt: 'Dead by Daylight skill check helper on a generator interaction',
+    caption: 'Skill Check Helper',
+    captionDesc: 'An aid for the skill-check minigame on the current game build.',
   },
-  gpSkinChanger: {
-    src: `${gameplay}/dota-2-skin-changer.png`,
-    alt: 'Dota 2 Skin Changer previewing arcana cosmetic on hero',
-    caption: 'Skin Changer preview',
-    captionDesc: 'Local arcana and immortal preview via Unlock All—client-side only.',
+  aim: {
+    src: `${gameplay}/dbd-aim.png`,
+    alt: 'Dead by Daylight aim options with FOV and smoothness controls',
+    caption: 'Aimbot',
+    captionDesc: 'Aim Key, FOV, Smoothness, and Draw FOV.',
   },
-  gpAutoKill: {
-    src: `${gameplay}/dota-2-auto-kill-steal.png`,
-    alt: 'Dota 2 Auto Kill Steal finishing low HP enemy with Zeus ultimate',
-    caption: 'Auto Kill Steal',
-    captionDesc: 'Lethal threshold detection activating Finger of Death at perfect timing.',
+  menu: {
+    src: `${gameplay}/dbd-menu.png`,
+    alt: 'Dead by Daylight cheat menu and config options',
+    caption: 'Menu and configs',
+    captionDesc: 'Menu and config options, plus Battle Mode, crosshair, out-of-screen arrows, and FOV changer.',
   },
-  gpFarmBot: {
-    src: `${gameplay}/dota-2-farm-bot.png`,
-    alt: 'Dota 2 Auto Farm Bot clearing jungle camps efficiently',
-    caption: 'Auto Farm Bot',
-    captionDesc: 'Jungle pathing with stack timer and courier manager for max GPM.',
-  },
-  gpHeroEsp: {
-    src: `${gameplay}/dota-2-hero-esp.png`,
-    alt: 'Dota 2 hero ESP with name tags and distance readouts',
-    caption: 'Hero ESP overlay',
-    captionDesc: 'Hero name tags, team colors and distance markers through fog of war.',
+  'cloud-dma': {
+    src: `${gameplay}/dbd-cloud-dma.png`,
+    alt: 'Cloud DMA Hyper-V layer described for a single Windows PC',
+    caption: 'Cloud DMA',
+    captionDesc: 'Hyper-V infrastructure on one PC. Required for full functionality of the main cheat.',
   },
 };
 
@@ -199,119 +168,78 @@ function slide(...keys: GalleryKey[]): ProductSlide[] {
 
 function slugFromHref(href: string): string {
   const segment = href.replace(productBase, '').replace(/^\//, '').replace(/\/$/, '');
-  return segment || 'dota-2-cheats';
+  return segment || 'dbd';
 }
 
 const tierAbout: Record<string, ProductPage['about']> = {
-  lite: [
+  dbd: [
     {
       type: 'p',
-      text: 'Dota 2 Lite is built for players who want map awareness first. In ranked, knowing enemy positions, ward placements and rune timings wins more fights than raw mechanics—Lite gives you that edge without script automation.',
+      text: 'The main Dead by Daylight cheat is one Windows product. It lists Survivor ESP, World ESP, a skill check helper, aim options, Battle Mode, a crosshair, out-of-screen arrows, an FOV changer, and menu/config options.',
     },
-    { type: 'h2', text: 'Ranked-safe by design' },
+    { type: 'h2', text: 'Cloud DMA is part of the full setup' },
     {
       type: 'p',
-      text: 'Lite skips Auto Combo and bot modules entirely. Your gameplay looks natural while map hack, zoom hack and rune timers keep you informed. Stream-proof mode hides overlays from OBS capture for content creators.',
-    },
-  ],
-  pro: [
-    {
-      type: 'p',
-      text: 'Dota 2 Pro is the sweet spot for ranked grinders. Auto Combo, Orbwalker and Smart Cast help you win teamfights without obvious bot patterns—when you tune Delay Setting using our portal presets.',
-    },
-    { type: 'h2', text: 'Scripts + awareness combined' },
-    {
-      type: 'p',
-      text: 'Pro inherits every Lite module and adds Auto Combo, Target Selector, Activator and ability radius drawing. You see the fight before it starts and win it with scripts that stay human at default settings.',
-    },
-  ],
-  elite: [
-    {
-      type: 'p',
-      text: 'Dota 2 Elite is the private build for players who want everything—Auto Farm Bot, Auto Kill Steal, Auto Dagon, Skin Changer, full map hack and direct developer support. Limited slots keep the build maintainable and patch cycles fast.',
-    },
-    { type: 'h2', text: 'Use Elite responsibly' },
-    {
-      type: 'p',
-      text: 'Elite power demands disciplined profiles. Test in lobbies, start with portal conservative presets, and scale up over days—not minutes. Staff in Discord help Elite users tune before their first ranked queue.',
+      text: 'The merchant requires Cloud DMA for full functionality. That layer is Hyper-V based and intended for a single PC. It is a separate purchase, and related purchases may be needed. Prices stay on the merchant page.',
     },
   ],
 };
 
 const tierBodies: Record<string, ProductPage['body']> = {
-  lite: [
-    { type: 'h2', text: 'Included modules' },
+  dbd: [
+    { type: 'h2', text: 'Survivor ESP' },
     {
       type: 'p',
-      text: 'Hero ESP with distance and name tags, ward and sentry locator, rune spawn timers, zoom hack, and stream-safe overlay hiding. Config presets for ranked and Turbo ship in the portal—load before your first queue.',
+      text: 'Box, fill, skeleton, nickname, health, level, prestige, character name, distance, and view line.',
     },
-    { type: 'h2', text: 'Upgrade path' },
+    { type: 'h2', text: 'World ESP' },
     {
       type: 'p',
-      text: 'Lite license holders can upgrade to Pro or Elite through the portal without losing config backups. Compare tiers on the main product page before checkout via our secure checkout.',
+      text: 'Generators, meat hooks, pallets, windows, closets, chests, totems, traps, the hatch, and escape doors.',
     },
-  ],
-  pro: [
-    { type: 'h2', text: 'Scripts and automation' },
+    { type: 'h2', text: 'Aim, skill checks, and extras' },
     {
       type: 'p',
-      text: 'Auto Combo, Orbwalker, Smart Cast with Prediction, Target Selector and Activator for BKB, Hex and Orchid. Delay Setting tunes cast timing so scripts stay natural in ranked. Start with portal presets, not max sliders.',
-    },
-    { type: 'h2', text: 'Recommended pairing' },
-    {
-      type: 'p',
-      text: 'Pro is the most popular tier at dotacheats.com—enough firepower for high-MMR lobbies without Elite slot limits. Pair with our scripts guide in the blog before your first ranked session.',
-    },
-  ],
-  elite: [
-    { type: 'h2', text: 'Full bot and finish suite' },
-    {
-      type: 'p',
-      text: 'Auto Farm Bot, Lane Control AI, Auto Kill Steal, Auto Dagon, Skin Changer and full map hack with smoke alerts. Use lobby testing before ranked—Elite power requires disciplined profiles, not rage settings.',
-    },
-    { type: 'h2', text: 'Availability' },
-    {
-      type: 'p',
-      text: 'Elite shows as limited slots on the status banner. Open a Discord ticket if checkout is gated—staff confirm slot availability before purchase.',
+      text: 'Aimbot options are Aim Key, FOV, Smoothness, and Draw FOV. The build also lists a skill check helper, Battle Mode, a crosshair, out-of-screen arrows, an FOV changer, and menu/config options.',
     },
   ],
 };
 
 const utilityBodies: Record<string, ProductPage['body']> = {
   'hwid-spoofer': [
-    { type: 'h2', text: 'When you need it' },
+    { type: 'h2', text: 'What the listing is' },
     {
       type: 'p',
-      text: 'Use when fresh Steam accounts fail instantly on one PC but work elsewhere—classic HWID enforcement. Do not use for account-only VAC cases; see [UGC](/products/dota-2-cheats/ugc/) instead.',
+      text: 'HWID Spoofer is hardware-ID spoofing and a cleaner. On the merchant page, Dead by Daylight is grouped under Easy Anti-Cheat. That is the context for this utility. It is not the main cheat menu.',
     },
-    { type: 'h2', text: 'Full workflow' },
+    { type: 'h2', text: 'What it does not do' },
     {
       type: 'p',
-      text: 'Restore point, driver cleanup, spoof application, cold reboot, identifier verification, then conservative cheat profile before ranked. Full checklist ships in the portal and in our HWID blog guide.',
-    },
-  ],
-  'ugc': [
-    { type: 'h2', text: 'What UGC covers' },
-    {
-      type: 'p',
-      text: 'UGC (Unban & Governance Control) is an appeal workspace for Steam restrictions, VAC bans, trade holds and security flags. Build custom workflows, automate dispute steps and track case status from one dashboard—not a guaranteed unban service.',
-    },
-    { type: 'h2', text: 'Realistic expectations' },
-    {
-      type: 'p',
-      text: 'Some VAC bans cannot be reversed. UGC organizes evidence and follow-ups for Valve review. Pair with [HWID Spoofer](/products/dota-2-cheats/hwid-spoofer/) when hardware is flagged, or a new account when reputation is burned.',
+      text: 'It does not lift a game penalty, file an appeal, or return an account you lost. Ready-made accounts, if you are considering them, are the separate [UGC Tool](/products/dbd-cheats/ugc/) listing. Full cheat functionality still requires [Cloud DMA](/products/dbd-cheats/cloud-dma/).',
     },
   ],
-  'unlock-all': [
-    { type: 'h2', text: 'Local preview only' },
+  ugc: [
+    { type: 'h2', text: 'Credential handoff' },
     {
       type: 'p',
-      text: 'Cosmetics display on your client for testing and content creation. Other players in your lobby see your actual inventory, not preview skins.',
+      text: 'UGC Tool is the merchant’s sale of ready-made game accounts. Delivery is a credential handoff: login details for an account the merchant is selling. Read the current offer at checkout for what is included today.',
     },
-    { type: 'h2', text: 'Included with Elite' },
+    { type: 'h2', text: 'Limits' },
     {
       type: 'p',
-      text: 'Skin Changer ships inside the Elite tier. Buy standalone here if you want cosmetic preview without full combat modules.',
+      text: 'This is not recovery of an account you already own. There is no promise that the login stays available, keeps its progress, or remains only yours. Buying and selling game accounts often conflicts with the publisher’s terms. Keep credentials off public pages.',
+    },
+  ],
+  'cloud-dma': [
+    { type: 'h2', text: 'Single PC' },
+    {
+      type: 'p',
+      text: 'Cloud DMA is Hyper-V based infrastructure meant to run on the same PC as the game. It is required for full functionality of the main Dead by Daylight cheat. Buying Cloud DMA alone does not add the cheat menu.',
+    },
+    { type: 'h2', text: 'Related purchases' },
+    {
+      type: 'p',
+      text: 'The merchant may require separate related purchases. This page does not invent those prices. Confirm them on the Cloud DMA checkout before you pay, and confirm Windows can start the Hyper-V layer.',
     },
   ],
 };
@@ -320,182 +248,109 @@ const productContent: Record<
   string,
   Pick<ProductPage, 'overview' | 'images' | 'fullFeatures' | 'goodToKnow' | 'limitations' | 'systemRequirements'>
 > = {
-  lite: {
-    images: slide('gpHeroEsp', 'gpMapHack', 'gpZoomHack'),
+  dbd: {
+    images: slide('esp', 'world-esp', 'skill-check', 'aim', 'menu'),
     goodToKnow: sharedGoodToKnow,
     limitations: sharedLimitations,
-    systemRequirements: dotaSystemRequirements,
+    systemRequirements: pcSystemRequirements,
     fullFeatures: [
-      'Player ESP & hero boxes',
-      'Ward & sentry locator',
-      'Jungle camp awareness',
-      'Ability cooldown tracking',
-      'Minimap hack overlay',
-      'Streamproof overlay mode',
-      'Distance readouts',
-      'Team color filter',
-      'Rune spawn timers',
-      'Zoom hack',
-      'Turbo preset config',
-      'Ranked preset config',
-      'Cloud config backup',
-      'Patch auto-updater',
+      'Survivor ESP: box, fill, skeleton, nickname, health, level, prestige, character name, distance, view line',
+      'World ESP: generators, meat hooks, pallets, windows, closets, chests, totems, traps, hatch, escape doors',
+      'Skill Check Helper',
+      'Aimbot: Aim Key, FOV, Smoothness, Draw FOV',
+      'Battle Mode, Crosshair, Out of Screen Arrows, FOV Changer',
+      'Menu and config options',
+      'Windows 10 and 11',
+      'Cloud DMA required for full functionality',
     ],
     overview: {
-      title: 'Built around a clear Dota 2 awareness workflow',
+      title: 'One Dead by Daylight cheat for Windows',
       paragraphs: [
-        'Dota 2 Lite focuses on hero ESP, ward locator, rune timers and zoom hack—everything you need to track ganks and map control without script automation. Modules are grouped in the portal so you can tune distance, colors, and stream-proof mode before your first queue.',
-        'Lite is the entry path for ranked and Turbo players who want map awareness with minimal report risk. No Auto Combo, no bots—just readable overlays maintained every patch at dotacheats.com.',
-      ],
-    },
-  },
-  pro: {
-    images: slide('gpScripts', 'gpMapHack', 'gpHeroEsp'),
-    goodToKnow: sharedGoodToKnow,
-    limitations: sharedLimitations,
-    systemRequirements: dotaSystemRequirements,
-    fullFeatures: [
-      'All Lite ESP & map hack modules',
-      'Auto Combo scripts',
-      'Orbwalker',
-      'Smart Cast & Prediction',
-      'Target Selector',
-      'Activator (BKB/Hex/Orchid)',
-      'Auto Heal',
-      'Ability radius drawing',
-      'Delay Setting tuning',
-      'Hero-specific script profiles',
-      'Smoke alert integration',
-      'Ranked-safe default presets',
-      'Lobby test profile',
-      'Cloud config backup',
-      'Patch auto-updater',
-      'Discord operator support',
-    ],
-    overview: {
-      title: 'Built around a clear Dota 2 scripts workflow',
-      paragraphs: [
-        'Dota 2 Pro adds Auto Combo, Orbwalker, Smart Cast and Activator on top of every Lite module. Hero profiles, delay tuning and activation keys live in one scripts tab—tuned for ranked lobbies when you start with portal presets, not max sliders.',
-        'Pro is the most popular tier: enough firepower for ranked and Turbo without Elite slot limits. Target Selector and Activator keep you efficient mid-fight while scripts stay human at default settings.',
-      ],
-    },
-  },
-  elite: {
-    images: slide('gpAutoKill', 'gpFarmBot', 'gpSkinChanger'),
-    goodToKnow: sharedGoodToKnow,
-    limitations: sharedLimitations,
-    systemRequirements: dotaSystemRequirements,
-    fullFeatures: [
-      'All Lite + Pro modules',
-      'Auto Farm Bot',
-      'Lane Control AI',
-      'Stack timer',
-      'Auto Courier Manager',
-      'Auto Kill Steal',
-      'Auto Dagon',
-      'Full map hack suite',
-      'Smoke alert system',
-      'Vision detector',
-      'Skin Changer (Unlock All)',
-      'Priority patch queue',
-      'Direct dev Discord support',
-      'Elite conservative presets',
-      'Cloud config backup',
-      'Patch auto-updater',
-      'Private slot access',
-    ],
-    overview: {
-      title: 'Built around a full Dota 2 operator workflow',
-      paragraphs: [
-        'Dota 2 Elite is the private build with Auto Farm Bot, Auto Kill Steal, Auto Dagon, Skin Changer, full map hack and priority patch delivery. Every Lite and Pro module is included—no caps, no upsells inside the loader.',
-        'Elite slots are limited so patch cycles stay fast and builds stay maintainable. Direct dev support in Discord helps you tune conservative profiles before ranked. Check the status banner on dotacheats.com before purchase.',
+        'This is the main PC build: Survivor ESP, World ESP, a skill check helper, aim options, Battle Mode, a crosshair, out-of-screen arrows, an FOV changer, and menu/config options.',
+        'Steam, Epic Games, and Xbox Game Pass for PC are the storefronts. Cloud DMA is required for full functionality and is purchased separately. Related purchases may be needed.',
       ],
     },
   },
   'hwid-spoofer': {
-    images: slide('gpMapHack', 'gpHeroEsp', 'gpZoomHack'),
+    images: slide('menu', 'esp'),
     goodToKnow:
-      'Run the compatibility scan in the portal before spoofing. Create a Windows restore point first. Verify identifiers changed after a cold reboot before launching Dota 2.',
+      'The merchant lists Dead by Daylight under Easy Anti-Cheat for this hardware-ID utility. Read that page for the games and term on offer today. It is a different checkout from the main cheat.',
     limitations:
-      'Spoofing does not help account-only VAC cases. Never stack two spoof tools. Shared or work PCs may not be suitable. You accept all risk from driver-level changes.',
+      'HWID Spoofer does not unban an account, appeal a penalty, or recover a login you lost. It is not a substitute for the main cheat or for Cloud DMA. Hardware-ID tools can conflict with platform rules. You use it at your own risk.',
     systemRequirements: [
-      { icon: 'reqWindows', text: 'Windows 10 or 11 64-bit with administrator access.' },
-      { icon: 'reqRestorePoint', text: 'Ability to create a system restore point before running.' },
-      { icon: 'reqShieldGuide', text: 'Follow the portal setup guide before launching Dota 2 after spoofing.' },
-      { icon: 'reqWifi', text: 'Stable connection for portal verification tools.' },
+      { icon: 'reqWindows', text: 'Windows 10 or 11 64-bit.' },
+      { icon: 'reqSteam', text: 'A PC copy of Dead by Daylight (Steam, Epic, or Xbox Game Pass PC) if that is the game you are pairing it with.' },
+      { icon: 'reqShieldGuide', text: 'The current merchant listing for supported titles and the EAC grouping.' },
+      { icon: 'reqWifi', text: 'A connection to the HWID Spoofer checkout.' },
     ],
     fullFeatures: [
-      'Disk serial profile tools',
-      'MAC address rotation',
-      'Restore point checklist',
-      'Compatibility scan',
-      'Driver conflict detection',
-      'Post-spoof verification',
-      'Identifier diff report',
-      'Cold reboot guide',
-      'Portal step-by-step workflow',
-      'Discord recovery support',
+      'Hardware ID spoofing',
+      'Cleaner tools',
+      'Framed for Dead by Daylight',
+      'Merchant lists DBD under Easy Anti-Cheat',
+      'Separate from the main cheat and Cloud DMA',
+      'Does not restore or unban an account',
     ],
     overview: {
-      title: 'Built around a clear hardware recovery workflow',
+      title: 'Hardware ID spoofing and cleaner',
       paragraphs: [
-        'The HWID Spoofer helps Dota 2 players recover when VAC flags PC hardware but the Steam account is still clean. Disk and MAC profile tools ship with a restore-point checklist, compatibility scan, and post-spoof verification steps.',
-        'Use this path when fresh accounts fail instantly on one machine but work elsewhere—not for account-only VAC cases. After spoof, load a conservative cheat profile from dotacheats.com before queuing ranked.',
+        'HWID Spoofer is a hardware-ID spoofing and cleaner utility. For this catalog it is framed around Dead by Daylight, which the merchant groups under Easy Anti-Cheat.',
+        'It does not include Survivor ESP or the rest of the cheat menu, and it is not an account-recovery product. UGC Tool is the separate ready-made account listing.',
       ],
     },
   },
   ugc: {
-    images: slide('gpMapHack', 'gpHeroEsp', 'gpZoomHack'),
+    images: slide('menu'),
     goodToKnow:
-      'Gather order email, platform account details and restriction screenshots before opening a ticket. UGC structures appeals—it does not bypass platform review.',
+      'Delivery is a credential handoff for a ready-made game account the merchant is selling. Read the checkout page for what that handoff includes today. Do not post the login on the forum.',
     limitations:
-      'UGC does not guarantee account restoration. Results vary by case type. Permanent VAC bans may require a new account path instead of appeal.',
+      'UGC Tool does not recover, unban, or restore an account you already played on. There is no promise the purchased login stays available or remains only yours. Account sales often conflict with publisher terms.',
     systemRequirements: [
-      { icon: 'reqMailOrder', text: 'Order email used at checkout on dotacheats.com or at checkout on dotacheats.com.' },
-      { icon: 'reqShieldAccount', text: 'Account details and ban or restriction notification if available.' },
-      { icon: 'reqWifiPortal', text: 'Internet access for Discord support and case dashboard.' },
+      { icon: 'reqWindows', text: 'Windows PC if you plan to use the account with the Dead by Daylight client on this site.' },
+      { icon: 'reqMailOrder', text: 'The email you use at UGC checkout, kept private.' },
+      { icon: 'reqShieldAccount', text: 'A private place to store the handed-off credentials. Do not email them to a public thread.' },
+      { icon: 'reqWifiPortal', text: 'A connection to the merchant page that describes the current account offer.' },
     ],
     fullFeatures: [
-      'Custom appeal workflows',
-      'Restriction dispute automation',
-      'Case documentation templates',
-      'Status tracking dashboard',
-      'Identity verification guide',
-      'Evidence upload structure',
-      'Timeline tracker',
-      'Follow-up response templates',
-      'Multi-platform support',
+      'Ready-made game accounts',
+      'Credential handoff',
+      'Separate from the cheat, HWID Spoofer, and Cloud DMA',
+      'Not an appeal or recovery service',
+      'No promise the login remains available',
     ],
     overview: {
-      title: 'Built around account recovery and appeal workflows',
+      title: 'Ready-made accounts, handed off as logins',
       paragraphs: [
-        'UGC (Unban & Governance Control) helps you recover restricted gaming, social and marketplace accounts with structured appeal workflows and automation—not instant unban guarantees.',
-        'Build custom dispute paths, track case status and rebuild your presence with smart restriction-management tools. Support walks you through each step via Discord when you need hands-on help.',
+        'UGC Tool is the merchant’s ready-made game account offer. You receive credentials for an account they are selling. The title on this site is UGC Tool.',
+        'It does not install the cheat, change hardware IDs, or work on an account you already own. Treat the handoff as a new login with no recovery guarantee.',
       ],
     },
   },
-  'unlock-all': {
-    images: slide('gpSkinChanger', 'gpHeroEsp', 'gpMapHack'),
+  'cloud-dma': {
+    images: slide('cloud-dma', 'menu', 'esp'),
     goodToKnow:
-      'Unlock All previews cosmetics locally on your client. Other players in your lobby see your real inventory—not preview skins. Included with Elite tier.',
+      'Cloud DMA is required for full functionality of the main Dead by Daylight cheat. The merchant describes a Hyper-V layer on a single PC. Related purchases may be required; their prices are on the merchant page, not here.',
     limitations:
-      'Local preview only—does not modify Steam inventory or store state. Other players cannot see previewed arcanas or sets.',
-    systemRequirements: dotaSystemRequirements,
+      'Cloud DMA is not the cheat menu, not a Windows license, and not a performance mode. If Hyper-V cannot start, the full feature set is not available on that machine. It does not change anti-cheat status or reverse a penalty.',
+    systemRequirements: [
+      { icon: 'reqWindows', text: 'Windows 10 or 11 on a single PC that can run Hyper-V.' },
+      { icon: 'reqCpu', text: 'Firmware virtualization available if the merchant’s Hyper-V layer requires it.' },
+      { icon: 'reqSettings', text: 'The main cheat is a separate purchase if you want the overlay menu.' },
+      { icon: 'reqWifi', text: 'Checkout access for Cloud DMA and any related purchase the merchant lists.' },
+    ],
     fullFeatures: [
-      'Hero skin swap',
-      'Arcana & immortal preview',
-      'Weapon & effect customizer',
-      'Loading screen editor',
-      'Cursor & HUD theme',
-      'Ward & courier replacer',
-      'Favorites list',
-      'Loadout export',
+      'Hyper-V based infrastructure',
+      'Single-PC setup',
+      'Required for full main-cheat functionality',
+      'Separate checkout from the main cheat',
+      'Related purchases may be required',
+      'Windows 10 and 11',
     ],
     overview: {
-      title: 'Built around a local cosmetic preview workflow',
+      title: 'Hyper-V infrastructure on one PC',
       paragraphs: [
-        'Unlock All lets you browse hero arcanas, immortals and exclusive sets locally in Dota 2—searchable catalog, favorites, and loadout export without modifying live Steam purchases.',
-        'Cosmetics display on your client for testing and content creation. Other players see your actual inventory, not preview skins. Included free with Elite; available standalone for cosmetic preview without combat modules.',
+        'Cloud DMA is the layer the merchant requires before the main Dead by Daylight cheat’s full feature set is available. It runs on a single PC using Hyper-V.',
+        'Plan for it as its own purchase. The merchant may also list related purchases. This page does not set those prices. The cheat’s ESP, skill check helper, and aim options stay on the main product.',
       ],
     },
   },
@@ -505,7 +360,9 @@ function buildTierPages(): ProductPage[] {
   return t.cheats.items.map((cheat) => {
     const slug = slugFromHref(cheat.href);
     const content = productContent[slug];
-    const displayName = cheat.name === 'Lite' ? 'Dota 2 Lite' : cheat.name === 'Pro' ? 'Dota 2 Pro' : 'Dota 2 Elite';
+    if (!content) {
+      throw new Error(`Missing product content for cheat slug "${slug}"`);
+    }
     return {
       slug,
       kind: 'tier',
@@ -521,7 +378,7 @@ function buildTierPages(): ProductPage[] {
       buyUrl: checkoutForSlug(slug),
       images: content.images,
       overview: content.overview,
-      acquisition: acquisitionFor(displayName),
+      acquisition: acquisitionFor(cheat.title),
       goodToKnow: content.goodToKnow,
       limitations: content.limitations,
       fullFeatures: content.fullFeatures,
@@ -539,9 +396,12 @@ function buildUtilityPages(): ProductPage[] {
     .map((product) => {
       const slug = slugFromHref(product.href);
       const content = productContent[slug];
+      if (!content) {
+        throw new Error(`Missing product content for utility slug "${slug}"`);
+      }
       return {
         slug,
-        kind: 'utility',
+        kind: 'utility' as const,
         badge: product.badge,
         category: product.category,
         name: product.title,
@@ -584,22 +444,13 @@ export function getAllCheatSlugs() {
   return cheatPages.map((p) => p.slug);
 }
 
-const cheatsHubSlides = slide('gpScripts', 'gpAutoKill', 'gpFarmBot');
-
-export const heroSlides = slide(
-  'gpMapHack',
-  'gpScripts',
-  'gpZoomHack',
-  'gpSkinChanger',
-  'gpAutoKill',
-  'gpFarmBot',
-  'gpHeroEsp',
-);
+export const heroSlides = slide('esp', 'world-esp', 'skill-check', 'aim', 'menu', 'cloud-dma');
 
 export const productHub = {
   path: productBase,
   title: t.products.title,
   subtitle: t.products.subtitle,
-  description: 'Elite dota cheats, HWID spoofer, UGC recovery, and cosmetic utilities for Dota 2 on PC.',
-  buyUrl: checkoutPath('dota2'),
+  description:
+    'Dead by Daylight cheats for Windows PC, plus HWID Spoofer, UGC Tool, and Cloud DMA. Steam, Epic, and Xbox Game Pass PC.',
+  buyUrl: checkoutPath('dbd'),
 };

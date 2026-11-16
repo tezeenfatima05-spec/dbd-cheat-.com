@@ -10,59 +10,66 @@ export interface PageSeoEntry {
 
 export const PAGE_SEO: Record<string, PageSeoEntry> = {
   '/': {
-    // gscNote: Keep primary keyword "dota 2 cheats" near front; trim if title truncates in SERP.
-    title: 'Dota 2 Cheats & Hacks | Scripts, Map Hack & ESP',
+    title: 'Dead by Daylight Cheats | ESP & PC Software',
     description:
-      'Dota 2 cheats for PC ranked: scripts, map hack, zoom hack, and skin changer tiers updated every patch at dotacheats.com.',
+      'Dead by Daylight cheats for Windows PC: Survivor ESP, World ESP, skill check helper, and aim options. Steam, Epic, and Xbox Game Pass PC. Cloud DMA required for full functionality.',
   },
-  '/products/dota-2-cheats/': {
-    title: 'Dota 2 Elite Cheats & Utility Products',
+  '/products/dbd-cheats/': {
+    title: 'Dead by Daylight Cheats & PC Utilities',
     description:
-      'Elite dota 2 cheats plus HWID spoofer, UGC tools, and Skin Changer utilities for Steam ranked on dotacheats.com.',
+      'Main DBD cheat plus HWID Spoofer, UGC Tool, and Cloud DMA for Windows. Steam, Epic, and Xbox Game Pass PC.',
   },
-  '/products/dota-2-cheats/elite/': {
-    title: 'Dota 2 Elite Cheats | Bots & Full Map Hack',
+  '/products/dbd-cheats/dbd/': {
+    title: 'Dead by Daylight Cheats | ESP, Aim & Skill Checks',
     description:
-      'Elite tier: auto farm bot, kill steal, skin changer, full map hack suite, and priority patch delivery.',
+      'Survivor ESP, World ESP, skill check helper, aim options, and configs. Cloud DMA is required for full functionality.',
   },
-  '/products/dota-2-cheats/utilities/': {
-    title: 'Dota 2 Utilities | HWID, UGC & Skin Changer',
+  '/products/dbd-cheats/utilities/': {
+    title: 'DBD Utilities | HWID, UGC Tool & Cloud DMA',
     description:
-      'Choose HWID Spoofer, UGC, or Skin Changer—when each utility fits and links to full product pages.',
+      'Compare HWID Spoofer, UGC Tool, and Cloud DMA. Each listing is a separate purchase from the main cheat.',
+  },
+  '/blogs/': {
+    title: 'Dead by Daylight Cheat Guides',
+    description:
+      'DBD cheat guides for ESP, Cloud DMA, HWID, setup, and compatibility. No undetected or ban-proof claims.',
   },
   '/blog/': {
-    title: 'Dota 2 Cheats Guides & Patch Notes',
+    title: 'Dead by Daylight Cheat Guides',
     description:
-      'Setup guides, Lite vs Pro comparisons, VAC patch checklists, and ranked config tips for dota cheats.',
+      'DBD cheat guides for ESP, Cloud DMA, HWID, setup, and compatibility. No undetected or ban-proof claims.',
+  },
+  '/reviews/': {
+    title: 'Reviews | Dead by Daylight Cheats',
+    description:
+      'How to read dbd-cheat.com listings. This site does not publish unverified ratings or ban-proof claims.',
   },
   '/forum/': {
-    title: 'Dota 2 Community Forum | DotaCheats',
-    description: 'Join Dota players to discuss heroes, builds, patch changes, guides, and community moments.',
+    title: 'Dead by Daylight Cheat Forum',
+    description:
+      'Illustrative DBD threads on ESP, install, compatibility, HWID, Cloud DMA, and subscriptions.',
   },
   '/faq/': {
-    title: 'FAQ | Dota 2 Cheats, Products & Setup',
+    title: 'FAQ | Dead by Daylight Cheats & Setup',
     description:
-      'Answers on cheat tiers, map hack, scripts, HWID tools, checkout, and blog guides at dotacheats.com.',
+      'Answers on Survivor ESP, Cloud DMA, HWID Spoofer, UGC Tool, and Windows PC support at dbd-cheat.com.',
   },
   '/terms/': {
-    title: 'Terms & Conditions | DotaCheats',
-    description:
-      'Purchase terms, license use, and refund policy for DotaCheats products sold through dotacheats.com.',
+    title: 'Terms & Conditions | dbd-cheat.com',
+    description: 'Purchase terms, license use, and risk notes for products linked from dbd-cheat.com.',
   },
   '/privacy/': {
-    title: 'Privacy Policy | DotaCheats',
-    description:
-      'How dotacheats.com uses analytics, cookies, and contact data when you browse or request support.',
+    title: 'Privacy Policy | dbd-cheat.com',
+    description: 'How dbd-cheat.com uses analytics, cookies, and contact data when you browse or request support.',
   },
   '/about/': {
-    title: 'About DotaCheats',
+    title: 'About dbd-cheat.com',
     description:
-      'What DotaCheats publishes: Dota 2 cheat tiers, utilities, guides, and status notes at dotacheats.com.',
+      'What dbd-cheat.com publishes: a Windows Dead by Daylight cheat, Cloud DMA, HWID Spoofer, and UGC Tool.',
   },
   '/support/': {
-    title: 'Support | DotaCheats',
-    description:
-      'Get help with loader setup, HWID, and checkout for Dota 2 cheat tiers and utilities.',
+    title: 'Support | dbd-cheat.com',
+    description: 'Help with the Dead by Daylight cheat, Cloud DMA, HWID Spoofer, UGC Tool, and checkout.',
   },
 };
 

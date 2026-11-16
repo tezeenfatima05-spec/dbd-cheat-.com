@@ -1,0 +1,52 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import { resolvePageSeo } from '../config/seo';
+import { breadcrumbSchema, webPageSchema } from '../utils/schema';
+import Breadcrumbs from '../components/Breadcrumbs.astro';
+import { ROUTES } from '../utils/path';
+import { Button } from '@/components/starwind/button';
+
+const seo = resolvePageSeo('/reviews/');
+const breadcrumbs = [
+  { name: 'Home', path: '/' },
+  { name: 'Reviews', path: '/reviews/' },
+];
+---
+
+<BaseLayout
+  title={seo.title}
+  description={seo.description}
+  jsonLd={[
+    webPageSchema({
+      name: 'Reviews',
+      description: seo.description,
+      url: '/reviews/',
+    }),
+    breadcrumbSchema(breadcrumbs),
+  ]}
+>
+  <section class="py-8 md:py-12">
+    <div class="mx-auto max-w-3xl px-5">
+      <Breadcrumbs items={breadcrumbs} />
+      <header class="mt-6 space-y-3">
+        <h1 class="text-3xl font-bold uppercase md:text-4xl">Reviews</h1>
+        <p class="text-lg text-muted-foreground">
+          dbd-cheat.com does not publish star ratings or buyer quotes we cannot verify. Read the feature list on each product page, then the merchant checkout, before you pay.
+        </p>
+      </header>
+      <div class="mt-8 space-y-4 text-sm leading-relaxed text-muted-foreground">
+        <p>
+          The main cheat lists Survivor ESP, World ESP, a skill check helper, aim options, and configs. Cloud DMA is required for full functionality. HWID Spoofer is a hardware-ID utility. UGC Tool is a ready-made account handoff, not recovery.
+        </p>
+        <p>
+          Nothing in the catalog is described as ban-proof. A longer subscription is not lower risk. If a page elsewhere promises a guaranteed result, it is not this site’s listing.
+        </p>
+      </div>
+      <div class="mt-8 flex flex-wrap gap-3">
+        <Button as="a" href={ROUTES.productsDbd} variant="primary">View the main cheat</Button>
+        <Button as="a" href={ROUTES.products} variant="outline">All products</Button>
+        <Button as="a" href={ROUTES.faq} variant="outline">FAQ</Button>
+      </div>
+    </div>
+  </section>
+</BaseLayout>

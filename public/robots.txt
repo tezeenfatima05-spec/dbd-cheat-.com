@@ -3,6 +3,6 @@ Allow: /
 
 Disallow: /go/
 
-Sitemap: https://dotacheats.com/sitemap.xml
+Sitemap: https://dbd-cheat.com/sitemap-index.xml
 
-# RSS: https://dotacheats.com/rss.xml
+# RSS: https://dbd-cheat.com/rss.xml

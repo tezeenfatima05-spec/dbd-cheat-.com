@@ -4,15 +4,21 @@ import sitemap from '@astrojs/sitemap';
 import { sitemapSerialize } from './src/config/sitemap.ts';
 
 export default defineConfig({
-  site: 'https://dotacheats.com',
+  site: 'https://dbd-cheat.com',
   trailingSlash: 'always',
   redirects: {
-    '/cheats/': '/products/dota-2-cheats/',
-    '/cheats/lite/': '/products/dota-2-cheats/',
-    '/cheats/pro/': '/products/dota-2-cheats/',
-    '/cheats/elite/': '/products/dota-2-cheats/elite/',
-    '/cheats/compare/': '/blog/dota-2-lite-vs-pro/',
+    '/cheats/': '/products/dbd-cheats/',
+    '/cheats/lite/': '/products/dbd-cheats/dbd/',
+    '/cheats/pro/': '/products/dbd-cheats/dbd/',
+    '/cheats/elite/': '/products/dbd-cheats/dbd/',
+    '/cheats/compare/': '/blogs/dbd-cheats-comparison/',
     '/contact/': '/support/',
+    '/blog/': '/blogs/',
+    '/blog/[slug]/': '/blogs/[slug]',
+    '/products/dbd-cheats/elite/': '/products/dbd-cheats/dbd/',
+    '/products/dbd-cheats/lite/': '/products/dbd-cheats/dbd/',
+    '/products/dbd-cheats/pro/': '/products/dbd-cheats/dbd/',
+    '/products/dbd-cheats/unlock-all/': '/products/dbd-cheats/',
   },
   compressHTML: true,
   prefetch: {
@@ -24,7 +30,8 @@ export default defineConfig({
   },
   integrations: [
     sitemap({
-      filter: (page) => !page.includes('/404') && !page.includes('/go/'),
+      filter: (page) =>
+        !page.includes('/404') && !page.includes('/go/') && !page.includes('/support/'),
       serialize: sitemapSerialize,
     }),
   ],

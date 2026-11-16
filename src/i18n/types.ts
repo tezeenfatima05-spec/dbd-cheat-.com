@@ -170,6 +170,8 @@ export interface Translations {
     sortOldest: string;
     sortShortRead: string;
     sortLongRead: string;
+    sortAz: string;
+    sortZa: string;
     emptyFilter: string;
     viewAll: string;
     read: string;

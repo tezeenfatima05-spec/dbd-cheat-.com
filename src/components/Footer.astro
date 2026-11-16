@@ -3,10 +3,11 @@ import { t } from '../i18n';
 import { Separator } from '@/components/starwind/separator';
 
 const resourceLinks = [
-  { href: '/blog/', label: 'Blog archive', ariaLabel: 'Blog' },
-  { href: '/products/dota-2-cheats/elite/', label: 'Elite cheats', ariaLabel: 'Elite cheats' },
-  { href: '/products/dota-2-cheats/', label: 'Products & utilities', ariaLabel: 'Products' },
-  { href: '/support/', label: t.footer.support },
+  { href: '/blogs/', label: 'Blogs', ariaLabel: 'Blogs' },
+  { href: '/products/dbd-cheats/dbd/', label: 'Dead by Daylight Cheats', ariaLabel: 'Dead by Daylight cheats' },
+  { href: '/products/dbd-cheats/', label: 'Products', ariaLabel: 'Products' },
+  { href: '/reviews/', label: 'Reviews', ariaLabel: 'Reviews' },
+  { href: 'https://discord.com/invite/wmFY3xVtwm', label: t.footer.support },
 ];
 
 const legalLinks = [
@@ -21,8 +22,8 @@ const legalLinks = [
     <div class="grid gap-10 sm:grid-cols-2 lg:grid-cols-4">
       <div class="space-y-4">
         <a href="/" class="inline-flex items-center gap-2.5 font-[family-name:var(--font-heading)] text-lg font-bold" aria-label={t.ui.homeAria}>
-          <img src="/logo.svg" alt="" width="32" height="32" class="rounded-md" />
-          <span aria-hidden="true">Dota<span class="text-primary">Cheats</span></span>
+          <img src="/logo.svg" alt="Dead by Daylight Cheats" width="32" height="32" class="rounded-md" />
+          <span aria-hidden="true">dead by daylight <span class="text-primary">cheats</span></span>
         </a>
         <p class="text-sm text-muted-foreground">{t.footer.tagline}</p>
       </div>

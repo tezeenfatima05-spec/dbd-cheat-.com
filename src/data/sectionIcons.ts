@@ -1,15 +1,12 @@
 import type { IconName } from '../components/icons/types';
 
 export const featureIcons: Record<string, IconName> = {
-  Scripts: 'stepCrosshair',
-  'Map Hack / ESP': 'featureEsp',
-  'Minimap & Runes': 'featureRadar',
-  'Auto Combo': 'featureAimbot',
-  'Utility Suite': 'featureUtilitySuite',
-  'Auto Farm Bot': 'compareAutoFarm',
-  'Stream Proof': 'streamProof',
-  'Zoom Hack': 'compareZoomHack',
-  'Cloud Config & Updates': 'compareCloudBackup',
+  'Survivor ESP': 'featureEsp',
+  'World ESP': 'featureRadar',
+  Aimbot: 'featureAimbot',
+  'Skill Check Helper': 'stepCrosshair',
+  'Menu & Config': 'compareCloudBackup',
+  'Battle Mode': 'featureUtilitySuite',
 };
 
 export const whyUsIcons: IconName[] = ['whyShield', 'whyUsers', 'whyMonitor', 'whyHeadphones'];
@@ -35,32 +32,31 @@ export const workflowIcons: IconName[] = [
 export const fieldNoteIcons: IconName[] = ['fieldCalendar', 'fieldShield', 'fieldHeadphones'];
 
 export const blogTagIcons: Record<string, IconName> = {
-  Guides: 'navBlog',
-  Setup: 'settings',
+  'Buying Guides': 'navBlog',
   Features: 'layers',
+  Comparisons: 'refresh',
+  Tutorials: 'settings',
+  'PC Optimization': 'monitor',
   Updates: 'refresh',
-  Troubleshooting: 'alert',
+  'Safety & Compatibility': 'shield',
 };
 
 export const heroStatusPills: { icon: IconName; label: string }[] = [
-  { icon: 'espActive', label: 'ESP Active' },
-  { icon: 'radarOnline', label: 'Radar Online' },
-  { icon: 'seasonBuild', label: 'Season Build' },
-  { icon: 'undetected', label: 'Undetected' },
-  { icon: 'softAim', label: 'Soft Aim Ready' },
-  { icon: 'noRecoil', label: 'No Recoil' },
-  { icon: 'streamProof', label: 'Stream Proof' },
-  { icon: 'lootEsp', label: 'Loot ESP' },
-  { icon: 'skeletonEsp', label: 'Skeleton ESP' },
-  { icon: 'uavRadar', label: 'UAV Radar' },
-  { icon: 'mapHack', label: 'Map Hack' },
-  { icon: 'support247', label: '24/7 Support' },
-  { icon: 'instantDelivery', label: 'Instant Delivery' },
-  { icon: 'rankedSafe', label: 'Ranked Safe' },
-  { icon: 'triggerBot', label: 'Trigger Bot' },
-  { icon: 'boneSelect', label: 'Bone Select' },
-  { icon: 'liveStatus', label: 'Live Status' },
-  { icon: 'autoUpdates', label: 'Auto Updates' },
+  { icon: 'espActive', label: 'Survivor ESP' },
+  { icon: 'mapHack', label: 'World ESP' },
+  { icon: 'skeletonEsp', label: 'Skeleton' },
+  { icon: 'softAim', label: 'Aimbot' },
+  { icon: 'seasonBuild', label: 'Skill Check' },
+  { icon: 'triggerBot', label: 'Battle Mode' },
+  { icon: 'boneSelect', label: 'Crosshair' },
+  { icon: 'uavRadar', label: 'Off-screen Arrows' },
+  { icon: 'lootEsp', label: 'FOV Changer' },
+  { icon: 'radarOnline', label: 'Cloud DMA' },
+  { icon: 'autoUpdates', label: 'Configs' },
+  { icon: 'liveStatus', label: 'Windows PC' },
+  { icon: 'support247', label: 'Steam' },
+  { icon: 'instantDelivery', label: 'Epic' },
+  { icon: 'compatShield', label: 'Game Pass PC' },
 ];
 
 export const heroStatIcons: IconName[] = [
@@ -71,6 +67,7 @@ export const heroStatIcons: IconName[] = [
 ];
 
 export const cheatTierIcons: Record<string, IconName> = {
+  DBD: 'tierElite',
   Lite: 'tierLite',
   Pro: 'tierPro',
   Elite: 'tierElite',
@@ -82,6 +79,7 @@ export const productCategoryIcons: Record<string, IconName> = {
   'DMA hardware': 'dmaHardware',
   'System utility': 'systemUtility',
   'Account recovery': 'accountRecovery',
+  'Account listing': 'accountRecovery',
   Cosmetic: 'cosmetic',
 };
 

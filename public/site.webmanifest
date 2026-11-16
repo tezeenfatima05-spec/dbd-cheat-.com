@@ -1,7 +1,7 @@
 {
-  "name": "DotaCheats",
-  "short_name": "DotaCheats",
-  "description": "Dota 2 cheats with scripts, map hack, zoom hack and skin changer for PC.",
+  "name": "dead by daylight cheats",
+  "short_name": "DBD Cheats",
+  "description": "Dead by Daylight cheats for Windows PC. Survivor ESP, World ESP, and Cloud DMA.",
   "start_url": "/",
   "scope": "/",
   "display": "standalone",

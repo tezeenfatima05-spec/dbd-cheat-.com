@@ -10,20 +10,32 @@ export function withTrailingSlash(path: string): string {
   return hash ? `${normalized}#${hash}` : normalized;
 }
 
-/** Former /cheats/* URLs → current routes (301 targets match astro.config + scripts/redirects.mjs). */
+const dbdProduct = `${PRODUCT_BASE}dbd/`;
+
+/** Former paths → current routes (301 targets match astro.config + scripts/redirects.mjs). */
 export const LEGACY_PATH_MAP: Record<string, string> = {
   '/cheats': PRODUCT_BASE,
   '/cheats/': PRODUCT_BASE,
-  '/cheats/lite': PRODUCT_BASE,
-  '/cheats/lite/': PRODUCT_BASE,
-  '/cheats/pro': PRODUCT_BASE,
-  '/cheats/pro/': PRODUCT_BASE,
-  '/cheats/elite': `${PRODUCT_BASE}elite/`,
-  '/cheats/elite/': `${PRODUCT_BASE}elite/`,
-  '/cheats/compare': '/blog/dota-2-lite-vs-pro/',
-  '/cheats/compare/': '/blog/dota-2-lite-vs-pro/',
+  '/cheats/lite': dbdProduct,
+  '/cheats/lite/': dbdProduct,
+  '/cheats/pro': dbdProduct,
+  '/cheats/pro/': dbdProduct,
+  '/cheats/elite': dbdProduct,
+  '/cheats/elite/': dbdProduct,
+  '/cheats/compare': '/blogs/dbd-cheats-comparison/',
+  '/cheats/compare/': '/blogs/dbd-cheats-comparison/',
   '/contact': '/support/',
   '/contact/': '/support/',
+  '/blog': '/blogs/',
+  '/blog/': '/blogs/',
+  '/products/dbd-cheats/elite': dbdProduct,
+  '/products/dbd-cheats/elite/': dbdProduct,
+  '/products/dbd-cheats/lite': dbdProduct,
+  '/products/dbd-cheats/lite/': dbdProduct,
+  '/products/dbd-cheats/pro': dbdProduct,
+  '/products/dbd-cheats/pro/': dbdProduct,
+  '/products/dbd-cheats/unlock-all': PRODUCT_BASE,
+  '/products/dbd-cheats/unlock-all/': PRODUCT_BASE,
 };
 
 export function normalizeInternalPath(href: string): string {
@@ -36,6 +48,9 @@ export function normalizeInternalPath(href: string): string {
   const hash = hashIndex >= 0 ? href.slice(hashIndex) : '';
 
   let pathname = rawPath.startsWith('/') ? rawPath : `/${rawPath}`;
+  if (pathname.startsWith('/blog/')) {
+    pathname = `/blogs/${pathname.slice('/blog/'.length)}`;
+  }
   pathname = LEGACY_PATH_MAP[pathname] ?? pathname;
 
   return withTrailingSlash(pathname) + hash;
@@ -43,10 +58,11 @@ export function normalizeInternalPath(href: string): string {
 
 export const ROUTES = {
   home: '/',
-  blog: '/blog/',
+  blog: '/blogs/',
+  reviews: '/reviews/',
   forum: '/forum/',
   products: PRODUCT_BASE,
-  productsElite: `${PRODUCT_BASE}elite/`,
+  productsDbd: dbdProduct,
   productsUtilities: `${PRODUCT_BASE}utilities/`,
   faq: '/faq/',
   terms: '/terms/',
@@ -56,10 +72,10 @@ export const ROUTES = {
 } as const;
 
 export function blogPostPath(slug: string): string {
-  return `/blog/${slug}/`;
+  return `/blogs/${slug}/`;
 }
 
-/** @deprecated Use productPath — cheat tier pages live under products. */
+/** @deprecated Use productPath — cheat pages live under products. */
 export function cheatPath(slug: string): string {
   return productPath(slug);
 }

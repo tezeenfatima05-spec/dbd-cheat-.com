@@ -1,11 +1,11 @@
-# Search Console workflow (dotacheats.com)
+# Search Console workflow (dbd-cheat.com)
 
 You verify the domain at your DNS provider—no HTML meta tags in the repo.
 
 ## Setup (once)
 
-1. Open [Google Search Console](https://search.google.com/search-console) and add the **domain** property for `dotacheats.com` if it is not already there.
-2. Under **Sitemaps**, submit: `https://dotacheats.com/sitemap.xml`
+1. Open [Google Search Console](https://search.google.com/search-console) and add the **domain** property for `dbd-cheat.com` if it is not already there.
+2. Under **Sitemaps**, submit: `https://dbd-cheat.com/sitemap-index.xml`
 3. Repeat in [Bing Webmaster Tools](https://www.bing.com/webmasters) if you use Bing.
 
 ## Monthly tune (15 minutes)
@@ -20,10 +20,9 @@ You verify the domain at your DNS provider—no HTML meta tags in the repo.
 
 | Common query intent | Edit path in `pageSeo.ts` |
 | ------------------- | ------------------------- |
-| dota 2 cheats (broad) | `/` |
-| lite / pro / elite | `/cheats/compare/`, `/cheats/lite/`, etc. |
-| map hack, scripts | `/cheats/pro/`, blog posts (titles set per article) |
-| hwid, skin changer | `/products/dota-2-cheats/utilities/` |
+| Dead by Daylight cheats (broad) | `/` |
+| DBD ESP and features | `/products/dbd-cheats/dbd/` and related blogs |
+| Cloud DMA and HWID utility | the matching product pages |
 | purchase / refund | `/terms/`, `/contact/` |
 
 Product and blog article pages still use their own titles from content; add entries to `PAGE_SEO` only when you want a fixed override for a specific pathname.

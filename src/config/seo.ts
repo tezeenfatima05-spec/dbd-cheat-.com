@@ -4,11 +4,11 @@ import { getPageSeoEntry } from './pageSeo';
 
 export const SITE_ORIGIN = `https://${t.site.domain}`;
 
-export const DEFAULT_OG_IMAGE = '/images/gameplay/dota-2-map-hack.png';
+export const DEFAULT_OG_IMAGE = '/images/og-default.png';
 
 export const GA_MEASUREMENT_ID = import.meta.env.PUBLIC_GA_MEASUREMENT_ID as string | undefined;
 
-/** @example @dotacheats */
+/** @example @dbdcheat */
 export const TWITTER_SITE = import.meta.env.PUBLIC_TWITTER_SITE as string | undefined;
 
 export const TWITTER_CREATOR = import.meta.env.PUBLIC_TWITTER_CREATOR as string | undefined;
@@ -59,3 +59,25 @@ export const RSS_FEED_PATH = '/rss.xml';
 
 /** Used by IndexNow postbuild script. */
 export const INDEXNOW_HOST = INDEXNOW_HOST_NAME;
+
+/** Production hostname — previews must never use this as a soft match. */
+export const PRODUCTION_HOST = INDEXNOW_HOST_NAME;
+
+const PREVIEW_HOST_SUFFIXES = [
+  '.workers.dev',
+  '.pages.dev',
+  '.up.railway.app',
+  '.railway.app',
+  '.vercel.app',
+  '.netlify.app',
+  '.onrender.com',
+  '.fly.dev',
+];
+
+export function isPreviewHost(hostname: string | undefined | null): boolean {
+  if (!hostname) return false;
+  const host = hostname.split(':')[0]!.toLowerCase();
+  if (host === PRODUCTION_HOST || host === `www.${PRODUCTION_HOST}`) return false;
+  if (host === 'localhost' || host === '127.0.0.1' || host.endsWith('.local')) return true;
+  return PREVIEW_HOST_SUFFIXES.some((suffix) => host.endsWith(suffix));
+}
